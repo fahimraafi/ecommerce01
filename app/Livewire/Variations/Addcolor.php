@@ -6,13 +6,18 @@ use Illuminate\Foundation\Providers\FoundationServiceProvider;
 use Livewire\Component;
 use App\Models\Color;
 use Illuminate\Support\Carbon;
+use Livewire\Attributes\Validate;
 
 class Addcolor extends Component
 {
+    #[Validate('required')]
     public $color_name;
+
+    #[Validate('required')]
     public $color_code;
 
     public function color_insert(){
+        $this->validate();
         Color::create([
             'color_name' => $this->color_name,
             'user_id' => auth()->id(),
@@ -29,6 +34,7 @@ class Addcolor extends Component
         Color::find($id)->update([
             'color_name' => $this->color_name,
             'color_code' => $this->color_code,
+            'user_id' => auth()->id(),
             'updated_at' => Carbon::now(),
         ]);
 

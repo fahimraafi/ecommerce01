@@ -37,7 +37,12 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category Photo</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" placeholder="Password" name="category_photo">
+                                <input type="file" class="form-control" name="category_photo" onchange="document.getElementById('web').src = window.URL.createObjectURL(this.files[0])">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <img src="" id="web" alt="" style="height: 120px; width: 120px">
                             </div>
                         </div>
 
